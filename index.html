@@ -1,341 +1,827 @@
 <!DOCTYPE html>
-<html lang="ko" class="scroll-smooth">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기계공학자 진로 포트폴리오</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            800: '#1e40af',
-                            900: '#1e3a8a',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>OpenMakerHub - 기계공학자 진로 포트폴리오</title>
     <style>
-        body { font-family: 'Pretendard', sans-serif; }
+        :root {
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-200: #bfdbfe;
+            --primary-500: #3b82f6;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--slate-50);
+            color: var(--slate-800);
+            line-height: 1.6;
+        }
+
+        /* 상단 네비게이션 */
+        nav {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--slate-200);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 0.85rem 1.5rem;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--primary-700);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--slate-600);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-600);
+        }
+
+        /* 히어로 섹션 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-900) 0%, var(--primary-700) 100%);
+            color: white;
+            padding: 4.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 0.35rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 0 auto 2rem;
+            color: var(--primary-100);
+            font-size: 1.05rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.6rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-decoration: none;
+            border: none;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .btn-white {
+            background-color: white;
+            color: var(--primary-800);
+        }
+
+        .btn-white:hover {
+            background-color: var(--primary-50);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: rgba(255, 255, 255, 0.12);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.22);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-600);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-700);
+        }
+
+        /* 공통 컨테이너 & 섹션 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3.5rem 1.5rem;
+        }
+
+        section {
+            margin-bottom: 4.5rem;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--slate-900);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .section-header p {
+            color: var(--slate-600);
+            font-size: 1rem;
+        }
+
+        /* 카드 그리드 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--slate-200);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 20px -5px rgba(37, 99, 235, 0.1);
+            border-color: var(--primary-200);
+        }
+
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 0.75rem 0;
+        }
+
+        .tag {
+            background-color: var(--primary-50);
+            color: var(--primary-700);
+            border: 1px solid var(--primary-100);
+            font-size: 0.78rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 0.4rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 0.6rem;
+        }
+
+        .card p {
+            color: var(--slate-600);
+            font-size: 0.95rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .card-link {
+            color: var(--primary-600);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            text-align: left;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* 타임라인 (Build Log) */
+        .timeline {
+            border-left: 3px solid var(--primary-200);
+            padding-left: 1.5rem;
+            margin-left: 0.5rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            background: white;
+            border: 1px solid var(--slate-200);
+            border-radius: 0.85rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.05rem;
+            top: 1.6rem;
+            width: 0.9rem;
+            height: 0.9rem;
+            border-radius: 50%;
+            background-color: var(--primary-600);
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--primary-500);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary-600);
+            margin-bottom: 0.3rem;
+        }
+
+        /* 코드 블록 (Firmware) */
+        .code-box {
+            background-color: var(--slate-900);
+            color: #e2e8f0;
+            border-radius: 0.85rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .code-header {
+            background-color: #1e293b;
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            font-size: 0.85rem;
+            font-family: monospace;
+            color: #93c5fd;
+        }
+
+        .copy-btn {
+            background-color: var(--primary-600);
+            color: white;
+            border: none;
+            padding: 0.3rem 0.75rem;
+            border-radius: 0.4rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        pre {
+            padding: 1.25rem;
+            overflow-x: auto;
+            font-family: "Fira Code", Consolas, Monaco, monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* 퀴즈 영역 */
+        .quiz-card {
+            background: white;
+            border: 2px solid var(--primary-100);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .quiz-question {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 1.25rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .quiz-opt {
+            background: var(--slate-50);
+            border: 1px solid var(--slate-200);
+            padding: 0.9rem 1.2rem;
+            border-radius: 0.6rem;
+            text-align: left;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--slate-700);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quiz-opt:hover {
+            background: var(--primary-50);
+            border-color: var(--primary-500);
+            color: var(--primary-800);
+        }
+
+        .quiz-result {
+            margin-top: 1rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 0.8rem 1rem;
+            border-radius: 0.5rem;
+            display: none;
+        }
+
+        /* 방명록 / Q&A (Maker's Lounge) */
+        .lounge-form {
+            background: white;
+            border: 1px solid var(--slate-200);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .form-input {
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--slate-200);
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-500);
+        }
+
+        .comment-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        .comment-item {
+            background: white;
+            border: 1px solid var(--slate-200);
+            border-radius: 0.75rem;
+            padding: 1.1rem 1.35rem;
+        }
+
+        .comment-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .comment-author {
+            font-weight: 700;
+            color: var(--primary-700);
+        }
+
+        .comment-date {
+            color: var(--slate-500);
+        }
+
+        /* 모달 창 */
+        .modal-bg {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-box {
+            background: white;
+            max-width: 500px;
+            width: 100%;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background-color: var(--slate-900);
+            color: var(--slate-500);
+            text-align: center;
+            padding: 2.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.85rem; }
+            .nav-links { gap: 0.8rem; font-size: 0.82rem; }
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased selection:bg-primary-500 selection:text-white">
+<body>
 
-    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <a href="#hero" class="text-xl font-bold bg-gradient-to-r from-primary-600 to-blue-800 bg-clip-text text-transparent">
-                Portfolio.me
-            </a>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-                <a href="#about" class="hover:text-primary-600 transition-colors">자기소개</a>
-                <a href="#career" class="hover:text-primary-600 transition-colors">희망진로</a>
-                <a href="#strengths" class="hover:text-primary-600 transition-colors">나의강점</a>
-                <a href="#activities" class="hover:text-primary-600 transition-colors">활동경험</a>
-                <a href="#roadmap" class="hover:text-primary-600 transition-colors">로드맵</a>
-                <a href="#future" class="hover:text-primary-600 transition-colors">미래목표</a>
-            </nav>
-            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
+    <!-- 네비게이션 -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">⚙️ OpenMakerHub</a>
+            <ul class="nav-links">
+                <li><a href="#about">Profile</a></li>
+                <li><a href="#showcase">Showcase</a></li>
+                <li><a href="#majors">Majors</a></li>
+                <li><a href="#build-log">Build Log</a></li>
+                <li><a href="#firmware">Firmware</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#lounge">Lounge</a></li>
+            </ul>
         </div>
-        <!-- Mobile Navigation Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
-            <a href="#about" class="block py-2 text-slate-600 hover:text-primary-600 font-medium">자기소개</a>
-            <a href="#career" class="block py-2 text-slate-600 hover:text-primary-600 font-medium">희망진로</a>
-            <a href="#strengths" class="block py-2 text-slate-600 hover:text-primary-600 font-medium">나의강점</a>
-            <a href="#activities" class="block py-2 text-slate-600 hover:text-primary-600 font-medium">활동경험</a>
-            <a href="#roadmap" class="block py-2 text-slate-600 hover:text-primary-600 font-medium">로드맵</a>
-            <a href="#future" class="block py-2 text-slate-600 hover:text-primary-600 font-medium">미래목표</a>
+    </nav>
+
+    <!-- 히어로 배너 -->
+    <header class="hero">
+        <div class="hero-badge">🔗 Mechanical Engineering &amp; Maker Portfolio</div>
+        <h1>설계부터 제어까지,<br>엔지니어링의 모든 기록</h1>
+        <p>아이디어를 3D 모델로 형상화하고, 코드로 생명을 불어넣는 오픈소스 메이커스 스페이스입니다. 미래 기계공학도의 다채로운 역량을 확인해 보세요.</p>
+        <div class="hero-buttons">
+            <a href="#showcase" class="btn btn-white">↓ 프로젝트 살펴보기</a>
+            <button class="btn btn-outline" onclick="showCheerMessage()">🪄 진로 응원 문구 받기</button>
         </div>
     </header>
 
-    <section id="hero" class="pt-32 pb-20 md:pt-44 md:pb-32 bg-gradient-to-b from-primary-50 via-white to-slate-50 overflow-hidden">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-100 text-primary-800 text-xs sm:text-sm font-semibold mb-6 shadow-sm">
-                <span class="w-2 h-2 rounded-full bg-primary-600 animate-pulse"></span>
-                고등학교 진로 포트폴리오
-            </div>
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
-                세상을 움직이는 힘을 설계하는<br>
-                <span class="bg-gradient-to-r from-primary-600 to-blue-700 bg-clip-text text-transparent">기계공학자</span>를 꿈꾸는 고등학생
-            </h1>
-            <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-10">
-                창의적인 아이디어와 문제해결력을 바탕으로 미래의 혁신적인 기계 시스템을 만들어가는 나의 여정입니다.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#about" class="px-8 py-3.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-semibold shadow-lg shadow-primary-500/30 transition-all transform hover:-translate-y-0.5">
-                    포트폴리오 둘러보기
-                </a>
-                <button onclick="openModal()" class="px-8 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-semibold border border-slate-300 shadow-sm transition-all">
-                    응원 메시지 남기기
-                </button>
-            </div>
-        </div>
-    </section>
+    <main class="container">
 
-    <section id="about" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">자기소개</h2>
-                <div class="w-12 h-1 bg-primary-600 mx-auto mt-3 rounded-full"></div>
+        <!-- 0. 자기소개 & 나의 강점 (사용자 맞춤형 프로필) -->
+        <section id="about">
+            <div class="section-header">
+                <h2>👋 Engineer Profile &amp; Strengths</h2>
+                <p>기계공학을 향한 열정과 핵심 역량을 소개합니다.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-primary-50 p-8 rounded-2xl border border-primary-100 shadow-sm flex flex-col justify-between">
+            <div class="grid-2">
+                <div class="card">
                     <div>
-                        <div class="w-12 h-12 bg-primary-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6 shadow-md shadow-primary-500/20">👤</div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">기본 정보</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            안녕하세요! 물리 법칙을 이해하고 눈에 보이는 결과물로 구현하는 과정에서 큰 즐거움을 느끼는 고등학생입니다.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-6 border-t border-primary-200/60 text-xs text-primary-800 font-medium">
-                        #도전정신 #탐구생활 #공학도
+                        <div class="tag-group">
+                            <span class="tag">고등학교 1학년</span>
+                            <span class="tag">희망직업: 기계공학자</span>
+                        </div>
+                        <h3>움직이는 모든 원리를 탐구하는 메이커</h3>
+                        <p><strong>진로 선택 이유:</strong> 기계와 구조물이 맞물려 작동하는 과정 자체가 너무 재미있고 흥미롭기 때문입니다. 상상을 현실의 장치로 구현할 때 가장 큰 보람을 느낍니다.</p>
                     </div>
                 </div>
-                <div class="bg-primary-50 p-8 rounded-2xl border border-primary-100 shadow-sm flex flex-col justify-between">
+                <div class="card">
                     <div>
-                        <div class="w-12 h-12 bg-primary-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6 shadow-md shadow-primary-500/20">🎯</div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">관심 분야</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            로보틱스, 자동화 시스템, 그리고 AI 기술이 융합된 스마트 기계 장치 연구에 깊은 흥미를 갖고 탐구하고 있습니다.
-                        </p>
-                    </div>
-                    <div class="mt-6 pt-6 border-t border-primary-200/60 text-xs text-primary-800 font-medium">
-                        #로봇공학 #스마트시스템 #융합기술
+                        <div class="tag-group">
+                            <span class="tag">창의력</span>
+                            <span class="tag">문제해결력</span>
+                            <span class="tag">순발력</span>
+                        </div>
+                        <h3>핵심 강점 및 동아리 탐구 경험</h3>
+                        <p><strong>AI 동아리 및 코딩 실습:</strong> 인공지능 기초와 알고리즘 코딩을 익히며 하드웨어와 소프트웨어를 융합하는 역량을 키웠습니다. 돌발 오류 앞에서도 순발력과 창의력으로 해결책을 찾아냅니다.</p>
                     </div>
                 </div>
-                <div class="bg-primary-50 p-8 rounded-2xl border border-primary-100 shadow-sm flex flex-col justify-between">
+            </div>
+        </section>
+
+        <!-- 1. Project Showcase -->
+        <section id="showcase">
+            <div class="section-header">
+                <h2>📦 Project Showcase</h2>
+                <p>직접 설계하고 제작한 대표 메인 하드웨어 프로젝트(예시) 3가지입니다.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card">
                     <div>
-                        <div class="w-12 h-12 bg-primary-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6 shadow-md shadow-primary-500/20">💡</div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3">학습 태도</h3>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            단순한 이론 암기를 넘어 실생활의 불편함을 해결하는 아이디어를 코딩과 메이커 활동을 통해 직접 구현해봅니다.
-                        </p>
+                        <div style="font-size: 1.75rem;">🤖</div>
+                        <div class="tag-group">
+                            <span class="tag">SolidWorks</span>
+                            <span class="tag">Arduino</span>
+                            <span class="tag">PID 제어</span>
+                        </div>
+                        <h3>자율주행 라인추종 로봇 V1.2</h3>
+                        <p>적외선 센서와 PID 제어 알고리즘을 결합하여 주행 안정성과 속도를 극대화한 소형 로봇 시스템입니다.</p>
                     </div>
-                    <div class="mt-6 pt-6 border-t border-primary-200/60 text-xs text-primary-800 font-medium">
-                        #실행력 #자기주도학습 #문제해결
-                    </div>
+                    <button class="card-link" onclick="openModal('자율주행 라인추종 로봇 V1.2 (예시)', '• 사용 툴: SolidWorks 2025, Arduino IDE\n• 핵심 기술: 5채널 적외선 어레이 센서 값을 기반으로 오차를 계산하는 PID 제어 적용\n• 성과: 급커브 구간 이탈률 0% 달성 및 주행 속도 25% 향상')">→ 상세 도면 보기</button>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="career" class="py-20 bg-slate-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">희망 진로: 기계공학자</h2>
-                <div class="w-12 h-1 bg-primary-600 mx-auto mt-3 rounded-full"></div>
-            </div>
-            <div class="max-w-3xl mx-auto bg-white p-8 sm:p-10 rounded-3xl shadow-md border border-slate-200">
-                <div class="flex items-center gap-4 mb-6">
-                    <div class="w-14 h-14 bg-gradient-to-br from-primary-500 to-blue-700 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg shadow-primary-500/25">⚙️</div>
+                <div class="card">
                     <div>
-                        <h3 class="text-xl font-bold text-slate-900">왜 기계공학자를 선택했나요?</h3>
-                        <p class="text-sm text-primary-600 font-medium">직업 선택의 이유</p>
+                        <div style="font-size: 1.75rem;">⚙️</div>
+                        <div class="tag-group">
+                            <span class="tag">Fusion 360</span>
+                            <span class="tag">3D Printing</span>
+                            <span class="tag">기계요소</span>
+                        </div>
+                        <h3>행성형 감속기 기어박스</h3>
+                        <p>3D 프린팅 공차를 철저히 반영하여 제작한 고토크 전달용 소형 유성기어 메커니즘입니다.</p>
                     </div>
+                    <button class="card-link" onclick="openModal('행성형 감속기 기어박스 (예시)', '• 감속비: 1:5.5 고토크 설계\n• 설계 포인트: 인벌류트 치형 정밀 모델링 및 PLA 출력 수축률(0.2mm) 보정 적용\n• 활용 분야: 소형 로봇 팔 관절 액추에이터')">→ 상세 도면 보기</button>
                 </div>
-                <p class="text-slate-700 text-base sm:text-lg leading-relaxed mb-6">
-                    무엇보다도 <strong class="text-primary-700 font-semibold">"재미있어서"</strong> 기계공학자를 꿈꾸게 되었습니다. 어릴 때부터 레고 블록이나 장난감을 조립하며 작동 원리를 파악하는 것을 좋아했고, 머릿속으로 상상하던 구조물을 실제로 설계하고 움직이게 만드는 과정에서 형언할 수 없는 희열을 느꼈습니다.
-                </p>
-                <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
-                    기계공학은 모든 산업의 기초가 되는 뼈대이자, 인류의 상상을 현실로 바꾸어주는 마법 같은 학문입니다. 내가 만든 메커니즘이 세상을 더 편리하고 안전하게 만들어준다는 점에 매료되어 이 길을 확신하게 되었습니다.
-                </p>
-            </div>
-        </div>
-    </section>
 
-    <section id="strengths" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">나의 강점</h2>
-                <div class="w-12 h-1 bg-primary-600 mx-auto mt-3 rounded-full"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gradient-to-br from-primary-600 to-blue-800 text-white p-8 rounded-3xl shadow-lg shadow-primary-500/20 relative overflow-hidden">
-                    <div class="absolute -right-4 -bottom-4 text-white/10 text-8xl font-black">01</div>
-                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-xl mb-6 backdrop-blur-sm">💡</div>
-                    <h3 class="text-xl font-bold mb-3">창의력</h3>
-                    <p class="text-primary-100 text-sm leading-relaxed">
-                        기존의 틀에 얽매이지 않고 독창적인 시각으로 문제를 바라봅니다. 새로운 메커니즘 설계나 아이디어 구상 시 참신한 대안을 제시합니다.
-                    </p>
-                </div>
-                <div class="bg-gradient-to-br from-primary-700 to-blue-900 text-white p-8 rounded-3xl shadow-lg shadow-primary-500/20 relative overflow-hidden">
-                    <div class="absolute -right-4 -bottom-4 text-white/10 text-8xl font-black">02</div>
-                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-xl mb-6 backdrop-blur-sm">🔍</div>
-                    <h3 class="text-xl font-bold mb-3">문제해결력</h3>
-                    <p class="text-primary-100 text-sm leading-relaxed">
-                        실험이나 코딩 과정에서 예상치 못한 오류나 기계적 결함이 발생했을 때, 원인을 논리적으로 분석하고 끝까지 해결책을 찾아냅니다.
-                    </p>
-                </div>
-                <div class="bg-gradient-to-br from-blue-600 to-indigo-800 text-white p-8 rounded-3xl shadow-lg shadow-blue-500/20 relative overflow-hidden">
-                    <div class="absolute -right-4 -bottom-4 text-white/10 text-8xl font-black">03</div>
-                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-xl mb-6 backdrop-blur-sm">⚡</div>
-                    <h3 class="text-xl font-bold mb-3">순발력</h3>
-                    <p class="primary-100 text-sm leading-relaxed text-blue-100">
-                        돌발 상황이나 긴급한 프로젝트 시연 상황에서도 당황하지 않고 유연하게 대처하여 빠르게 최적의 대안을 실행으로 옮깁니다.
-                    </p>
+                <div class="card">
+                    <div>
+                        <div style="font-size: 1.75rem;">⚡</div>
+                        <div class="tag-group">
+                            <span class="tag">IoT</span>
+                            <span class="tag">Sensors</span>
+                            <span class="tag">친환경</span>
+                        </div>
+                        <h3>스마트 에너지 모니터링 장치</h3>
+                        <p>태양광 발전 패널의 효율을 실시간으로 측정하고 데이터를 수집하는 IoT 기반 모니터링 키트입니다.</p>
+                    </div>
+                    <button class="card-link" onclick="openModal('스마트 에너지 모니터링 장치 (예시)', '• 구성 부품: INA219 전류/전압 센서, 서보모터 2축 태양 추적기\n• 핵심 기능: 입사각에 따른 발전량 실시간 로깅 및 최적 각도 자동 제어')">→ 상세 도면 보기</button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="activities" class="py-20 bg-slate-50">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">동아리 및 탐구 활동</h2>
-                <div class="w-12 h-1 bg-primary-600 mx-auto mt-3 rounded-full"></div>
+        <!-- 2. Related Engineering Majors & Roadmap -->
+        <section id="majors">
+            <div class="section-header">
+                <h2>🎓 Related Engineering Majors &amp; Roadmap</h2>
+                <p>목표로 하는 공학 전공 분야와 단계별 진로 로드맵입니다.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 rounded-full bg-primary-100 text-primary-800 text-xs font-semibold">AI 동아리 활동</span>
-                        <span class="text-xs text-slate-400">교내 활동</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">인공지능 기반 메커니즘 탐구</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        AI 동아리에서 기계공학과 인공지능의 융합 가능성을 주제로 탐구 활동을 진행했습니다. 센서 데이터를 활용해 자율주행 모형 자동차의 제어 알고리즘을 분석하고 토론했습니다.
-                    </p>
-                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-500">
-                        <span class="font-semibold text-primary-700">성과 (예시):</span> 센서 인식 오류를 줄이기 위한 데이터 필터링 아이디어를 제안하여 동아리 우수 탐구 사례로 선정됨.
+            <div class="grid-3">
+                <div class="card">
+                    <div>
+                        <div class="tag-group"><span class="tag">전공 탐색</span></div>
+                        <h3>기계공학부 (Mechanical Eng.)</h3>
+                        <p>4대 역학(고체·열·유체·동역학)을 바탕으로 에너지, 모빌리티, 첨단 제조 시스템을 설계하는 핵심 공학 분야입니다.</p>
                     </div>
                 </div>
-                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold">코딩 실습</span>
-                        <span class="text-xs text-slate-400">자기주도 프로젝트</span>
+                <div class="card">
+                    <div>
+                        <div class="tag-group"><span class="tag">융합 전공</span></div>
+                        <h3>로봇·메카트로닉스공학</h3>
+                        <p>기계 설계에 전자 제어와 AI 알고리즘을 결합하여 지능형 로봇 및 자동화 설비를 구현합니다.</p>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">파이썬 및 제어 프로그래밍 실습</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                        하드웨어를 제어하기 위한 기초 소프트웨어 역량을 기르기 위해 프로그래밍 언어 실습을 진행했습니다. 간단한 시뮬레이션 코드를 작성하며 논리적 사고력을 넓혔습니다.
-                    </p>
-                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-500">
-                        <span class="font-semibold text-primary-700">성과 (예시):</span> 모터 제어 시뮬레이션 프로그램을 직접 디버깅하며 순발력과 문제해결력을 발휘해 성공적으로 구동 완료.
+                </div>
+                <div class="card">
+                    <div>
+                        <div class="tag-group"><span class="tag">진로 로드맵</span></div>
+                        <h3>고교 → 대학 → 엔지니어</h3>
+                        <p><strong>고교:</strong> 수학·물리 심화 및 AI/코딩 탐구<br><strong>대학:</strong> CAD 설계 및 제어공학 연구<br><strong>목표:</strong> 창의적 메커니즘 설계 엔지니어</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="roadmap" class="py-20 bg-white">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">진로 로드맵</h2>
-                <div class="w-12 h-1 bg-primary-600 mx-auto mt-3 rounded-full"></div>
+        <!-- 3. Build Log (제작 일지) -->
+        <section id="build-log">
+            <div class="section-header">
+                <h2>🛠️ Engineering Build Log</h2>
+                <p>설계부터 조립까지 단계별 엔지니어링 검증 기록(예시)입니다.</p>
             </div>
-            <div class="relative border-l-2 border-primary-200 ml-4 sm:ml-32 space-y-12">
-                <div class="relative pl-8 sm:pl-12">
-                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary-600 ring-4 ring-primary-100"></div>
-                    <span class="text-xs font-semibold text-primary-600 uppercase tracking-wider">현재 단계</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-1">고등학교 과정 (기초 역량 다지기)</h3>
-                    <p class="text-slate-600 text-sm mt-2 leading-relaxed">
-                        수학 및 물리 과목의 탄탄한 기본기 확립, AI 동아리 및 코딩 실습을 통한 융합적 사고력과 문제해결력 배양.
-                    </p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2026.05.12</div>
+                    <h3>Step 2. 하드웨어 조립 및 가공</h3>
+                    <p>알루미늄 프로파일 및 레이저 커팅된 아크릴 플레이트를 활용해 섀시 프레임 결합 완료. 모터 마운트 브래킷의 하중 지지력을 구조 해석을 통해 검증함.</p>
                 </div>
-                <div class="relative pl-8 sm:pl-12">
-                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary-500 ring-4 ring-primary-100"></div>
-                    <span class="text-xs font-semibold text-primary-600 uppercase tracking-wider">대학 진학 후</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-1">대학교 심화 학습 및 프로젝트</h3>
-                    <p class="text-slate-600 text-sm mt-2 leading-relaxed">
-                        기계공학 전공 심화(역학, 열역학, 로보틱스) 학습 및 캡스톤 디자인 프로젝트를 통한 실무형 설계 역량 강화.
-                    </p>
-                </div>
-                <div class="relative pl-8 sm:pl-12">
-                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-400 ring-4 ring-primary-100"></div>
-                    <span class="text-xs font-semibold text-primary-600 uppercase tracking-wider">미래 비전</span>
-                    <h3 class="text-lg font-bold text-slate-900 mt-1">전문 기계공학자 및 연구원</h3>
-                    <p class="text-slate-600 text-sm mt-2 leading-relaxed">
-                        스마트 로봇 및 친환경 에너지 기계 시스템을 개발하는 글로벌 엔지니어로 성장하여 세상에 기여하기.
-                    </p>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026.05.01</div>
+                    <h3>Step 1. 3D 모델링 및 설계 검토</h3>
+                    <p>SolidWorks를 활용한 파트별 디자인 완료. 조립 상태에서의 간섭 체크(Interference Check)를 수행하여 설계 결함 사전 차단.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="future" class="py-20 bg-gradient-to-br from-primary-900 to-blue-950 text-white">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 backdrop-blur-sm">🚀</div>
-            <h2 class="text-2xl sm:text-4xl font-extrabold mb-6">나의 미래 목표</h2>
-            <p class="text-primary-100 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
-                "단순히 작동하는 기계를 넘어, 인간과 기술이 조화롭게 공존하는 혁신적인 스마트 시스템을 설계하는 최고의 기계공학자가 되겠습니다."
-            </p>
-            <div class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/10 border border-white/20 text-sm font-medium backdrop-blur-sm">
-                <span>✨ 창의력과 문제해결력으로 미래를 설계합니다.</span>
+        <!-- 4. Source Code & Firmware -->
+        <section id="firmware">
+            <div class="section-header">
+                <h2>💻 Source Code &amp; Firmware</h2>
+                <p>하드웨어를 제어하는 핵심 펌웨어 아카이브입니다.</p>
             </div>
-        </div>
-    </section>
+            <div class="code-box">
+                <div class="code-header">
+                    <span>motor_control.ino</span>
+                    <button class="copy-btn" onclick="copyCode()">코드 복사</button>
+                </div>
+                <pre id="firmware-code">// Motor Control Firmware for Autonomous Rover
+const int ENA = 9; // PWM 속도 제어 핀
+const int IN1 = 8; // 모터 회전 방향 핀 1
+const int IN2 = 7; // 모터 회전 방향 핀 2
 
-    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-sm">© 2026 고등학생 진로 포트폴리오. All rights reserved.</p>
+void setup() {
+  pinMode(ENA, OUTPUT);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  analogWrite(ENA, 200); // 0~255 값으로 속도 제어
+}</pre>
+            </div>
+        </section>
+
+        <!-- 5. Engineering Career Quiz -->
+        <section id="quiz">
+            <div class="section-header">
+                <h2>🧠 Engineering Career Quiz</h2>
+                <p>가볍게 풀어보는 공학/기계 진로 상식 퀴즈입니다.</p>
+            </div>
+            <div class="quiz-card">
+                <div class="quiz-question">Q. 기계설계 및 3D 모델링 과정에서 부품 간의 물리적 간섭 여부를 사전에 확인하는 검증 과정을 무엇이라 할까요?</div>
+                <div class="quiz-options">
+                    <button class="quiz-opt" onclick="checkQuiz(1)">1. 열역학 분석 (Thermodynamic Analysis)</button>
+                    <button class="quiz-opt" onclick="checkQuiz(2)">2. 간섭 체크 (Interference Check)</button>
+                    <button class="quiz-opt" onclick="checkQuiz(3)">3. 유속 시뮬레이션 (CFD)</button>
+                </div>
+                <div id="quiz-feedback" class="quiz-result"></div>
+            </div>
+        </section>
+
+        <!-- 6. Maker's Lounge & Q&A -->
+        <section id="lounge">
+            <div class="section-header">
+                <h2>💬 Maker's Lounge &amp; Q&amp;A</h2>
+                <p>프로젝트에 대한 질문이나 개선 아이디어를 자유롭게 남겨주세요.</p>
+            </div>
+            <div class="lounge-form">
+                <div class="form-row">
+                    <input type="text" id="author-input" class="form-input" placeholder="이름 (예: 김엔지니어)" style="flex: 1; min-width: 150px;">
+                    <input type="text" id="comment-input" class="form-input" placeholder="응원 메시지나 질문을 입력하세요..." style="flex: 3; min-width: 240px;">
+                    <button class="btn btn-primary" onclick="addComment()">등록하기</button>
+                </div>
+            </div>
+            <div id="comment-list" class="comment-list">
+                <div class="comment-item">
+                    <div class="comment-meta">
+                        <span class="comment-author">김엔지니어</span>
+                        <span class="comment-date">2026-06-01</span>
+                    </div>
+                    <p>감속기 기어비 설계 아이디어가 참신하네요! 토크 테스트 결과도 정말 궁금해집니다.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 도면 상세보기 모달 -->
+    <div id="detail-modal" class="modal-bg" onclick="closeModal(event)">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <h3 id="modal-title" style="color: var(--primary-800); margin-bottom: 1rem;">프로젝트 상세</h3>
+            <p id="modal-body" style="white-space: pre-line; color: var(--slate-700); margin-bottom: 1.5rem; font-size: 0.95rem;"></p>
+            <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="document.getElementById('detail-modal').style.display='none'">닫기</button>
         </div>
+    </div>
+
+    <footer>
+        <p>© 2026 OpenMakerHub | 기계공학자 진로 포트폴리오</p>
     </footer>
 
-    <div id="modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative animate-in fade-in zoom-in duration-200">
-            <h3 class="text-xl font-bold text-slate-900 mb-2">응원 메시지 남기기</h3>
-            <p class="text-sm text-slate-600 mb-6">기계공학자를 꿈꾸는 저에게 따뜻한 한마디를 남겨주세요!</p>
-            <textarea id="msg-input" rows="4" class="w-full p-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm resize-none mb-4" placeholder="응원의 메시지를 입력해주세요..."></textarea>
-            <div class="flex justify-end gap-3">
-                <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium transition-colors">취소</button>
-                <button onclick="submitMsg()" class="px-5 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium shadow-md shadow-primary-500/20 transition-all">보내기</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 text-white px-6 py-3 rounded-xl shadow-xl text-sm font-medium transition-all">
-        응원 메시지가 성공적으로 전송되었습니다! 🚀
-    </div>
-
     <script>
-        // Mobile menu toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
+        // 진로 응원 문구 버튼
+        function showCheerMessage() {
+            const messages = [
+                "⚙️ '상상하는 모든 움직임을 현실로 만드는 미래의 기계공학자, 김규나 학생을 응원합니다!'",
+                "🚀 '호기심과 재미에서 시작된 설계가 세상을 바꾸는 혁신적인 기술이 됩니다!'",
+                "💡 '창의력, 문제해결력, 순발력을 갖춘 최고의 엔지니어로 성장할 거예요!'"
+            ];
+            const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+            alert(randomMsg);
+        }
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        // 상세 도면 모달 열기
+        function openModal(title, desc) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-body').innerText = desc;
+            document.getElementById('detail-modal').style.display = 'flex';
+        }
 
-        // Close mobile menu when clicking a link
-        mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        function closeModal(e) {
+            if (e.target.id === 'detail-modal') {
+                document.getElementById('detail-modal').style.display = 'none';
+            }
+        }
+
+        // 펌웨어 코드 복사
+        function copyCode() {
+            const code = document.getElementById('firmware-code').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                alert('motor_control.ino 코드가 클립보드에 복사되었습니다!');
             });
-        });
-
-        // Modal functions
-        function openModal() {
-            document.getElementById('modal').classList.remove('hidden');
         }
 
-        function closeModal() {
-            document.getElementById('modal').classList.add('hidden');
-            document.getElementById('msg-input').value = '';
+        // 퀴즈 정답 확인
+        function checkQuiz(choice) {
+            const feedback = document.getElementById('quiz-feedback');
+            feedback.style.display = 'block';
+            if (choice === 2) {
+                feedback.style.backgroundColor = '#dcfce7';
+                feedback.style.color = '#166534';
+                feedback.innerText = '🎉 정답입니다! 간섭 체크(Interference Check)는 조립 전 부품들이 겹치거나 충돌하는 설계 결함을 찾아내는 필수 과정입니다.';
+            } else {
+                feedback.style.backgroundColor = '#fee2e2';
+                feedback.style.color = '#991b1b';
+                feedback.innerText = '❌ 아쉽네요! 3D 모델링 조립 시 부품 간의 충돌 여부를 확인하는 과정은 2번 "간섭 체크"입니다.';
+            }
         }
 
-        function submitMsg() {
-            const input = document.getElementById('msg-input').value.trim();
-            if (!input) {
-                alert('메시지를 입력해주세요.');
+        // 방명록 댓글 등록
+        function addComment() {
+            const authorInput = document.getElementById('author-input');
+            const commentInput = document.getElementById('comment-input');
+            const author = authorInput.value.trim() || '익명 메이커';
+            const text = commentInput.value.trim();
+
+            if (!text) {
+                alert('내용을 입력해 주세요!');
                 return;
             }
-            closeModal();
-            const toast = document.getElementById('toast');
-            toast.classList.remove('hidden');
-            setTimeout(() => {
-                toast.classList.add('hidden');
-            }, 3000);
+
+            const today = new Date().toISOString().split('T')[0];
+            const list = document.getElementById('comment-list');
+            const item = document.createElement('div');
+            item.className = 'comment-item';
+            item.innerHTML = `
+                <div class="comment-meta">
+                    <span class="comment-author">${author}</span>
+                    <span class="comment-date">${today}</span>
+                </div>
+                <p>${text}</p>
+            `;
+            list.prepend(item);
+            commentInput.value = '';
         }
     </script>
 </body>
