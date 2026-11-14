@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기계공학자 진로 포트폴리오</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Pretendard', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-primary-500 selection:text-white">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#hero" class="text-xl font-bold bg-gradient-to-r from-primary-600 to-blue-800 bg-clip-text text-transparent">
+                Portfolio.me
+            </a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                <a href="#about" class="hover:text-primary-600 transition-colors">자기소개</a>
+                <a href="#career" class="hover:text-primary-600 transition-colors">희망진로</a>
+                <a href="#strengths" class="hover:text-primary-600 transition-colors">나의강점</a>
+                <a href="#activities" class="hover:text-primary-600 transition-colors">활동경험</a>
+                <a href="#roadmap" class="hover:text-primary-600 transition-colors">로드맵</a>
+                <a href="#future" class="hover:text-primary-600 transition-colors">미래목표</a>
+            </nav>
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-4 space-y-2">
+            <a href="#about" class="block py-2 text-slate-600 hover:text-primary-600 font-medium">자기소개</a>
+            <a href="#career" class="block py-2 text-slate-600 hover:text-primary-600 font-medium">희망진로</a>
+            <a href="#strengths" class="block py-2 text-slate-600 hover:text-primary-600 font-medium">나의강점</a>
+            <a href="#activities" class="block py-2 text-slate-600 hover:text-primary-600 font-medium">활동경험</a>
+            <a href="#roadmap" class="block py-2 text-slate-600 hover:text-primary-600 font-medium">로드맵</a>
+            <a href="#future" class="block py-2 text-slate-600 hover:text-primary-600 font-medium">미래목표</a>
+        </div>
+    </header>
+
+    <section id="hero" class="pt-32 pb-20 md:pt-44 md:pb-32 bg-gradient-to-b from-primary-50 via-white to-slate-50 overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-100 text-primary-800 text-xs sm:text-sm font-semibold mb-6 shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-primary-600 animate-pulse"></span>
+                고등학교 진로 포트폴리오
+            </div>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight mb-6">
+                세상을 움직이는 힘을 설계하는<br>
+                <span class="bg-gradient-to-r from-primary-600 to-blue-700 bg-clip-text text-transparent">기계공학자</span>를 꿈꾸는 고등학생
+            </h1>
+            <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mb-10">
+                창의적인 아이디어와 문제해결력을 바탕으로 미래의 혁신적인 기계 시스템을 만들어가는 나의 여정입니다.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#about" class="px-8 py-3.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white font-semibold shadow-lg shadow-primary-500/30 transition-all transform hover:-translate-y-0.5">
+                    포트폴리오 둘러보기
+                </a>
+                <button onclick="openModal()" class="px-8 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-semibold border border-slate-300 shadow-sm transition-all">
+                    응원 메시지 남기기
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">자기소개</h2>
+                <div class="w-12 h-1 bg-primary-600 mx-auto mt-3 rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-primary-50 p-8 rounded-2xl border border-primary-100 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-primary-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6 shadow-md shadow-primary-500/20">👤</div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">기본 정보</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            안녕하세요! 물리 법칙을 이해하고 눈에 보이는 결과물로 구현하는 과정에서 큰 즐거움을 느끼는 고등학생입니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-6 border-t border-primary-200/60 text-xs text-primary-800 font-medium">
+                        #도전정신 #탐구생활 #공학도
+                    </div>
+                </div>
+                <div class="bg-primary-50 p-8 rounded-2xl border border-primary-100 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-primary-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6 shadow-md shadow-primary-500/20">🎯</div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">관심 분야</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            로보틱스, 자동화 시스템, 그리고 AI 기술이 융합된 스마트 기계 장치 연구에 깊은 흥미를 갖고 탐구하고 있습니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-6 border-t border-primary-200/60 text-xs text-primary-800 font-medium">
+                        #로봇공학 #스마트시스템 #융합기술
+                    </div>
+                </div>
+                <div class="bg-primary-50 p-8 rounded-2xl border border-primary-100 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-primary-600 text-white rounded-xl flex items-center justify-center font-bold text-xl mb-6 shadow-md shadow-primary-500/20">💡</div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">학습 태도</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            단순한 이론 암기를 넘어 실생활의 불편함을 해결하는 아이디어를 코딩과 메이커 활동을 통해 직접 구현해봅니다.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-6 border-t border-primary-200/60 text-xs text-primary-800 font-medium">
+                        #실행력 #자기주도학습 #문제해결
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="career" class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">희망 진로: 기계공학자</h2>
+                <div class="w-12 h-1 bg-primary-600 mx-auto mt-3 rounded-full"></div>
+            </div>
+            <div class="max-w-3xl mx-auto bg-white p-8 sm:p-10 rounded-3xl shadow-md border border-slate-200">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-14 h-14 bg-gradient-to-br from-primary-500 to-blue-700 rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg shadow-primary-500/25">⚙️</div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-900">왜 기계공학자를 선택했나요?</h3>
+                        <p class="text-sm text-primary-600 font-medium">직업 선택의 이유</p>
+                    </div>
+                </div>
+                <p class="text-slate-700 text-base sm:text-lg leading-relaxed mb-6">
+                    무엇보다도 <strong class="text-primary-700 font-semibold">"재미있어서"</strong> 기계공학자를 꿈꾸게 되었습니다. 어릴 때부터 레고 블록이나 장난감을 조립하며 작동 원리를 파악하는 것을 좋아했고, 머릿속으로 상상하던 구조물을 실제로 설계하고 움직이게 만드는 과정에서 형언할 수 없는 희열을 느꼈습니다.
+                </p>
+                <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+                    기계공학은 모든 산업의 기초가 되는 뼈대이자, 인류의 상상을 현실로 바꾸어주는 마법 같은 학문입니다. 내가 만든 메커니즘이 세상을 더 편리하고 안전하게 만들어준다는 점에 매료되어 이 길을 확신하게 되었습니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="strengths" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">나의 강점</h2>
+                <div class="w-12 h-1 bg-primary-600 mx-auto mt-3 rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-primary-600 to-blue-800 text-white p-8 rounded-3xl shadow-lg shadow-primary-500/20 relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-white/10 text-8xl font-black">01</div>
+                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-xl mb-6 backdrop-blur-sm">💡</div>
+                    <h3 class="text-xl font-bold mb-3">창의력</h3>
+                    <p class="text-primary-100 text-sm leading-relaxed">
+                        기존의 틀에 얽매이지 않고 독창적인 시각으로 문제를 바라봅니다. 새로운 메커니즘 설계나 아이디어 구상 시 참신한 대안을 제시합니다.
+                    </p>
+                </div>
+                <div class="bg-gradient-to-br from-primary-700 to-blue-900 text-white p-8 rounded-3xl shadow-lg shadow-primary-500/20 relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-white/10 text-8xl font-black">02</div>
+                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-xl mb-6 backdrop-blur-sm">🔍</div>
+                    <h3 class="text-xl font-bold mb-3">문제해결력</h3>
+                    <p class="text-primary-100 text-sm leading-relaxed">
+                        실험이나 코딩 과정에서 예상치 못한 오류나 기계적 결함이 발생했을 때, 원인을 논리적으로 분석하고 끝까지 해결책을 찾아냅니다.
+                    </p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-600 to-indigo-800 text-white p-8 rounded-3xl shadow-lg shadow-blue-500/20 relative overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-white/10 text-8xl font-black">03</div>
+                    <div class="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center text-xl mb-6 backdrop-blur-sm">⚡</div>
+                    <h3 class="text-xl font-bold mb-3">순발력</h3>
+                    <p class="primary-100 text-sm leading-relaxed text-blue-100">
+                        돌발 상황이나 긴급한 프로젝트 시연 상황에서도 당황하지 않고 유연하게 대처하여 빠르게 최적의 대안을 실행으로 옮깁니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="activities" class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">동아리 및 탐구 활동</h2>
+                <div class="w-12 h-1 bg-primary-600 mx-auto mt-3 rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full bg-primary-100 text-primary-800 text-xs font-semibold">AI 동아리 활동</span>
+                        <span class="text-xs text-slate-400">교내 활동</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">인공지능 기반 메커니즘 탐구</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        AI 동아리에서 기계공학과 인공지능의 융합 가능성을 주제로 탐구 활동을 진행했습니다. 센서 데이터를 활용해 자율주행 모형 자동차의 제어 알고리즘을 분석하고 토론했습니다.
+                    </p>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-500">
+                        <span class="font-semibold text-primary-700">성과 (예시):</span> 센서 인식 오류를 줄이기 위한 데이터 필터링 아이디어를 제안하여 동아리 우수 탐구 사례로 선정됨.
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-semibold">코딩 실습</span>
+                        <span class="text-xs text-slate-400">자기주도 프로젝트</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">파이썬 및 제어 프로그래밍 실습</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        하드웨어를 제어하기 위한 기초 소프트웨어 역량을 기르기 위해 프로그래밍 언어 실습을 진행했습니다. 간단한 시뮬레이션 코드를 작성하며 논리적 사고력을 넓혔습니다.
+                    </p>
+                    <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-500">
+                        <span class="font-semibold text-primary-700">성과 (예시):</span> 모터 제어 시뮬레이션 프로그램을 직접 디버깅하며 순발력과 문제해결력을 발휘해 성공적으로 구동 완료.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="roadmap" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">진로 로드맵</h2>
+                <div class="w-12 h-1 bg-primary-600 mx-auto mt-3 rounded-full"></div>
+            </div>
+            <div class="relative border-l-2 border-primary-200 ml-4 sm:ml-32 space-y-12">
+                <div class="relative pl-8 sm:pl-12">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary-600 ring-4 ring-primary-100"></div>
+                    <span class="text-xs font-semibold text-primary-600 uppercase tracking-wider">현재 단계</span>
+                    <h3 class="text-lg font-bold text-slate-900 mt-1">고등학교 과정 (기초 역량 다지기)</h3>
+                    <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                        수학 및 물리 과목의 탄탄한 기본기 확립, AI 동아리 및 코딩 실습을 통한 융합적 사고력과 문제해결력 배양.
+                    </p>
+                </div>
+                <div class="relative pl-8 sm:pl-12">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-primary-500 ring-4 ring-primary-100"></div>
+                    <span class="text-xs font-semibold text-primary-600 uppercase tracking-wider">대학 진학 후</span>
+                    <h3 class="text-lg font-bold text-slate-900 mt-1">대학교 심화 학습 및 프로젝트</h3>
+                    <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                        기계공학 전공 심화(역학, 열역학, 로보틱스) 학습 및 캡스톤 디자인 프로젝트를 통한 실무형 설계 역량 강화.
+                    </p>
+                </div>
+                <div class="relative pl-8 sm:pl-12">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-400 ring-4 ring-primary-100"></div>
+                    <span class="text-xs font-semibold text-primary-600 uppercase tracking-wider">미래 비전</span>
+                    <h3 class="text-lg font-bold text-slate-900 mt-1">전문 기계공학자 및 연구원</h3>
+                    <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                        스마트 로봇 및 친환경 에너지 기계 시스템을 개발하는 글로벌 엔지니어로 성장하여 세상에 기여하기.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="future" class="py-20 bg-gradient-to-br from-primary-900 to-blue-950 text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center text-3xl mx-auto mb-6 backdrop-blur-sm">🚀</div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold mb-6">나의 미래 목표</h2>
+            <p class="text-primary-100 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto">
+                "단순히 작동하는 기계를 넘어, 인간과 기술이 조화롭게 공존하는 혁신적인 스마트 시스템을 설계하는 최고의 기계공학자가 되겠습니다."
+            </p>
+            <div class="inline-flex items-center gap-3 px-6 py-3 rounded-2xl bg-white/10 border border-white/20 text-sm font-medium backdrop-blur-sm">
+                <span>✨ 창의력과 문제해결력으로 미래를 설계합니다.</span>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm">© 2026 고등학생 진로 포트폴리오. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div id="modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+            <h3 class="text-xl font-bold text-slate-900 mb-2">응원 메시지 남기기</h3>
+            <p class="text-sm text-slate-600 mb-6">기계공학자를 꿈꾸는 저에게 따뜻한 한마디를 남겨주세요!</p>
+            <textarea id="msg-input" rows="4" class="w-full p-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-500 text-sm resize-none mb-4" placeholder="응원의 메시지를 입력해주세요..."></textarea>
+            <div class="flex justify-end gap-3">
+                <button onclick="closeModal()" class="px-5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-medium transition-colors">취소</button>
+                <button onclick="submitMsg()" class="px-5 py-2.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium shadow-md shadow-primary-500/20 transition-all">보내기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 text-white px-6 py-3 rounded-xl shadow-xl text-sm font-medium transition-all">
+        응원 메시지가 성공적으로 전송되었습니다! 🚀
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Modal functions
+        function openModal() {
+            document.getElementById('modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+            document.getElementById('msg-input').value = '';
+        }
+
+        function submitMsg() {
+            const input = document.getElementById('msg-input').value.trim();
+            if (!input) {
+                alert('메시지를 입력해주세요.');
+                return;
+            }
+            closeModal();
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
